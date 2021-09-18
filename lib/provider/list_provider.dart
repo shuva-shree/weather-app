@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather/models/api-service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/weather_model.dart';
+
+final getUpdatedData =
+    ChangeNotifierProvider<ListProvider>((ref) => ListProvider());
 
 class ListProvider extends ChangeNotifier {
   String name = "Boston";
@@ -29,10 +32,5 @@ class ListProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getWeather() async {
-    isLoading = true;
-    weatherReport = await getResponse();
-    isLoading = false;
-    notifyListeners();
-  }
+  
 }
